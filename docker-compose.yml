@@ -1,0 +1,18 @@
+version: '3.8'
+services:
+  db:
+    image: postgres:14.1-alpine
+    restart: always
+    environment:
+      POSTGRES_USER: user_crud
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: crud_db
+    ports:
+      - "5436:5432"
+    volumes:
+      - ./postgres:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U user_crud"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
