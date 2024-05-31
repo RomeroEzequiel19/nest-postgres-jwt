@@ -5,9 +5,10 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { Cat } from './entities/cat.entity';
 import { BreedModule } from 'src/breed/breed.module';
 import { BreedService } from 'src/breed/breed.service';
+import { AuthModule } from 'src/auth/auth.module';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Cat]), BreedModule],
+  imports: [TypeOrmModule.forFeature([Cat]), BreedModule, AuthModule],
   controllers: [CatsController],
   providers: [CatsService, BreedService],
 })
